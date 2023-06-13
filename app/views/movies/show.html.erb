@@ -1,0 +1,10 @@
+<h2> Movie Details are.....</h2>
+<h3><%= @movie.name %></h3>
+<p><%= @movie.rating %></p>
+<p><%= @movie.description %></p>
+<p><%= @movie.released_on %></p>
+<%= link_to "Edit Movie", edit_movie_path %>
+<li><%= link_to "Destroy", movie_path(@movie), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
