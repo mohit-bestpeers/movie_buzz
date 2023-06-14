@@ -3,8 +3,37 @@
 <p><%= @movie.rating %></p>
 <p><%= @movie.description %></p>
 <p><%= @movie.released_on %></p>
+<% if user_signed_in? && current_user.admin? %>
 <%= link_to "Edit Movie", edit_movie_path %>
 <li><%= link_to "Destroy", movie_path(@movie), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %></li>
+ <% end %>
+<h2>Reviews</h2>
+<% @movie.reviews.each do |review| %>
+  <p>
+    <strong>Star:</strong>
+    <%= review.star %>
+  </p>
+
+  <p>
+    <strong>Body:</strong>
+    <%= review.body %>
+  </p>
+<% end %>
+
+<h2>Add a Review:</h2>
+<%= form_with model: [ @movie, @movie.reviews.build ] do |form| %>
+  <p>
+    <%= form.label :star %><br>
+    <%= form.number_field :star %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

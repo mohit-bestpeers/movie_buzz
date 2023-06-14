@@ -3,10 +3,11 @@ class CreateReviews < ActiveRecord::Migration[7.0]
     create_table :reviews do |t|
       t.string :body
       t.integer :star
-      t.references :user, null: false, foreign_key: true
-      t.references :movie, null: false, foreign_key: true
+      t.bigint  :reviewable_id
+      t.string  :reviewable_type
 
       t.timestamps
     end
+    add_index :reviews, [:reviewable_id, :reviewable_type]
   end
 end

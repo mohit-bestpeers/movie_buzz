@@ -6,6 +6,9 @@
       <%= link_to movie.name, movie %>
    </li>
 <%end%>
-
+<% if user_signed_in? && current_user.admin? %>
 <%= link_to "New Movie", new_movie_path %>
+<% end %>
+
+
 
