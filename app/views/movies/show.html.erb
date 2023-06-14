@@ -3,11 +3,13 @@
 <p><%= @movie.rating %></p>
 <p><%= @movie.description %></p>
 <p><%= @movie.released_on %></p>
+<% if user_signed_in? && current_user.admin? %>
 <%= link_to "Edit Movie", edit_movie_path %>
 <li><%= link_to "Destroy", movie_path(@movie), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %></li>
+ <% end %>
 <h2>Reviews</h2>
 <% @movie.reviews.each do |review| %>
   <p>
