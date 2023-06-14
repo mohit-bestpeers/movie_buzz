@@ -8,3 +8,30 @@
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %></li>
+<h2>Reviews</h2>
+<% @movie.reviews.each do |review| %>
+  <p>
+    <strong>Star:</strong>
+    <%= review.star %>
+  </p>
+
+  <p>
+    <strong>Body:</strong>
+    <%= review.body %>
+  </p>
+<% end %>
+
+<h2>Add a Review:</h2>
+<%= form_with model: [ @movie, @movie.reviews.build ] do |form| %>
+  <p>
+    <%= form.label :star %><br>
+    <%= form.number_field :star %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
