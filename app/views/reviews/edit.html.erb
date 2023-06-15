@@ -1,0 +1,16 @@
+<%=  form_for(@review, url: movie_review_path(@movie)) do |form| %>
+  <div>
+    <%= form.label :star %><br>
+    <%= form.number_field :star %>
+  </div>
+
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+
+  </div>
+  <div>
+   <%= form.submit %>
+  </div>
+
+<% end %>

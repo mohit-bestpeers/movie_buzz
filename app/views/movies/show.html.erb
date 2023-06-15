@@ -19,12 +19,13 @@
   <p>
     <strong>Body:</strong>
     <%= review.body %>
-  </p>
+  </p><%= link_to "Edit Review", edit_movie_review_path(@movie,review) %>
   <li><%= link_to "Destroy", movie_review_path(@movie,review), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %></li>
 <% end %>
+
 <% if user_signed_in?  %>
 <h2>Add a Review:</h2>
 <%= form_with model: [ @movie, @movie.reviews.build ] do |form| %>
