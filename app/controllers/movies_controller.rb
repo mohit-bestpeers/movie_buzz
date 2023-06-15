@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   before_action :authenticate_user! ,only: [:create,:edit,:destroy,:update]
   
   def index
-    @movies =  Movie.all
+    @movies =  Movie.paginate(page: params[:page], per_page: 3)
   end
 
   def show
@@ -45,7 +45,7 @@ class MoviesController < ApplicationController
 
   private
   def movie_params
-    params.require(:movie).permit(:name,:rating,:description,:director,:released_on)
+    params.require(:movie).permit(:name,:rating,:description,:director,:released_on,:image)
   end
  
 end

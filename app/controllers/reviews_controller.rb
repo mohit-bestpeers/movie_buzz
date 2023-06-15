@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user! ,only: [:create,:edit,:destroy,:update]
+   
   def create
     @movie = Movie.find(params[:movie_id])
     @review = @movie.reviews.new(review_params)
@@ -20,7 +22,8 @@ class ReviewsController < ApplicationController
     @movie = Movie.find(params[:movie_id])
     @review = @movie.reviews.find(params[:id])
     if @review.update(review_params)
-      redirect_to @movie
+      redirect_to @movie,
+      notice: "Successfully Updated your review!"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -29,9 +32,9 @@ class ReviewsController < ApplicationController
   def destroy
     @movie = Movie.find(params[:movie_id])
     @review = @movie.reviews.find(params[:id])
-    @review.destroy
-
-    redirect_to root_path, status: :see_other
+    @review.destroy    
+    redirect_to root_path, status: :see_other,
+    notice: "Successfully Deleted your review!"
   end
  
   private

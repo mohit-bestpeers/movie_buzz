@@ -3,6 +3,9 @@
 <p><%= @movie.rating %></p>
 <p><%= @movie.description %></p>
 <p><%= @movie.released_on %></p>
+<%= image_tag @movie.image ,size:20*20 %>
+<% if @movie.image != nil  %>
+<% end %>
 <% if user_signed_in? && current_user.admin? %>
 <%= link_to "Edit Movie", edit_movie_path %>
 <li><%= link_to "Destroy", movie_path(@movie), data: {
@@ -19,11 +22,13 @@
   <p>
     <strong>Body:</strong>
     <%= review.body %>
-  </p><%= link_to "Edit Review", edit_movie_review_path(@movie,review) %>
-  <li><%= link_to "Destroy", movie_review_path(@movie,review), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
+  <% if user_signed_in? && current_user.user? || user_signed_in? && current_user.admin? %>
+    </p><%= link_to "Edit Review", edit_movie_review_path(@movie,review) %>
+    <li><%= link_to "Destroy", movie_review_path(@movie,review), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    } %></li>
+  <% end %>
 <% end %>
 
 <% if user_signed_in?  %>

@@ -35,11 +35,12 @@
 
   <div>
   <%= form.label :released_on%><br>
-  <%= form.text_field :released_on %><br>
+  <%= form.date_field :released_on %><br>
   <% @movie.errors.full_messages_for(:released_on).each do |message| %>
     <div><%= message %></div>
   <% end %>
   <div>
+  <%= form.file_field :image %>
   
   <div>
     <%= form.submit %>
