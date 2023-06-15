@@ -7,9 +7,9 @@ class User < ApplicationRecord
   #   end
   # end
  
-  has_many :reviews 
+  has_many :reviews , dependent: :destroy
   has_many :movies, through: :reviews
-  has_many :movies
+  has_many :movies , dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
