@@ -16,13 +16,16 @@
     <strong>Star:</strong>
     <%= review.star %>
   </p>
-
   <p>
     <strong>Body:</strong>
     <%= review.body %>
   </p>
+  <li><%= link_to "Destroy", movie_review_path(@movie,review), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
 <% end %>
-
+<% if user_signed_in?  %>
 <h2>Add a Review:</h2>
 <%= form_with model: [ @movie, @movie.reviews.build ] do |form| %>
   <p>
@@ -32,9 +35,9 @@
   <p>
     <%= form.label :body %><br>
     <%= form.text_area :body %>
-    <%= form.hidden_field :user_id, :value => current_user.id %>
   </p>
   <p>
     <%= form.submit %>
   </p>
+  <% end %>
 <% end %>

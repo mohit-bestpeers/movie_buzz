@@ -10,9 +10,12 @@
   color: aqua;
 }
 
-.fc:hover{
+.fc:hover {
   text-shadow: 2px red 2px;
  
+}
+.click:active{
+  color:darkgoldenrod;
 }
 .nav1{
   background-image: linear-gradient(to bottom ,rgba(24, 18, 18, 0.712) ,black);
