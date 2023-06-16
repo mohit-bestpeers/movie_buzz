@@ -11,7 +11,7 @@ gem "bootstrap"
 gem "sprockets-rails"
 gem "image_processing"
 gem 'will_paginate'
-
+gem 'will_paginate-bootstrap-style'
 
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"

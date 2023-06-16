@@ -1,49 +1,57 @@
-<h2> Movie Details are.....</h2>
-<h3><%= @movie.name %></h3>
-<p><%= @movie.rating %></p>
-<p><%= @movie.description %></p>
-<p><%= @movie.released_on %></p>
-<%= image_tag @movie.image ,size:20*20 %>
-<% if @movie.image != nil  %>
-<% end %>
-<% if user_signed_in? && current_user.admin? %>
-<%= link_to "Edit Movie", edit_movie_path %>
-<li><%= link_to "Destroy", movie_path(@movie), data: {
+<div class="container">
+    <div class="image">
+      <%= image_tag @movie.image ,size:20*20 %>
+    </div>
+    <div class="details">
+    <h3>Movie :<%= @movie.name %></h3>
+     <p><span class='size'>Director :  </span><%= @movie.director %></p>
+    <p><span class='size'>Rating : </span><%= @movie.rating %><span class="fa fa-star checked"></span></p>
+    <p><span class='size'>Description :  </span><%= @movie.description %></p>
+    <p><span class='size'>Released On : </span><%= @movie.released_on %></p>
+    <button type="button" class="btn btn-outline-warning"><%= link_to "Edit Movie", edit_movie_path ,class: "custom-link" %></button>
+    <button type="button" class="btn btn-outline-warning"><%= link_to "Destroy", movie_path(@movie),class: "custom-link", data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  } %></li>
- <% end %>
+                  } %>
+    </button>
+    <hr>
+    </div>
+  </div>
+ 
+
+<div class="container">
+<div class="details">
 <h2>Reviews</h2>
 <% @movie.reviews.each do |review| %>
-  <p>
-    <strong>Star:</strong>
-    <%= review.star %>
-  </p>
-  <p>
-    <strong>Body:</strong>
-    <%= review.body %>
-  <% if user_signed_in? && current_user.user? || user_signed_in? && current_user.admin? %>
-    </p><%= link_to "Edit Review", edit_movie_review_path(@movie,review) %>
-    <li><%= link_to "Destroy", movie_review_path(@movie,review), data: {
+<p><span class='size'>Star :  </span><%= review.star %></p>
+<p><span class='size'>Comment :  </span><%= review.body %></p>
+  <% if user_signed_in? && current_user.id == review.user_id || user_signed_in? && current_user.admin? %>
+    <button type="button" class="btn btn-outline-warning"><%= link_to "Edit Review", edit_movie_review_path(@movie,review),class: "custom-link" %></button>
+    <button type="button" class="btn btn-outline-warning"><%= link_to "Destroy", movie_review_path(@movie,review), data: {
                       turbo_method: :delete,
                       turbo_confirm: "Are you sure?"
-                    } %></li>
+                    } ,class: "custom-link" %></button>
   <% end %>
 <% end %>
-
-<% if user_signed_in?  %>
-<h2>Add a Review:</h2>
-<%= form_with model: [ @movie, @movie.reviews.build ] do |form| %>
-  <p>
-    <%= form.label :star %><br>
-    <%= form.number_field :star %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+</div>
+</div>
+<div class="container">
+<div class="details">
+<% if user_signed_in? && current_user.reviews %>
+  <h2>Add a Review:</h2>
+  <%= form_with model: [ @movie, @movie.reviews.build ] do |form| %>
+    <p>
+      <%= form.label :star %><br>
+      <%= form.select :star, options_for_select(1..5), {}, class: "form-control" %>
+    </p>
+    <p>
+      <%= form.label :body %><br>
+      <%= form.text_area :body %>
+    </p>
+    <p>
+      <%= form.submit %> 
+    </p>
+  <% end %>
 <% end %>
-<% end %>
+</div>
+</div>

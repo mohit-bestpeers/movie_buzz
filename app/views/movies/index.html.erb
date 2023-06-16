@@ -1,16 +1,59 @@
-<h1> Welcome to movies hub </h1>
-<div class='movies'>
-<% @movies.each do |movie|%>
-  
-   <li id='mov'>
-      <%= link_to movie.name, movie %>
-      <%= image_tag movie.image ,size:20*20 %>
-   </li>
-<%end%>
-</div>
+
+  <header>
+    Welcome To MovieBuzz
+  </header>
+  <main>
+    <section class="featured-movies">
+      <h2>Featured Movies</h2>
+      <div class="movie-grid margin">
+      <% @movies.each do |movie| %>
+        <div class="movie">
+          <%=image_tag movie.image, class: "style_image" %> 
+          <h5 class="card-title">Movie :<%=movie.name%></h5>
+          <h6><p class="card-text">Rating :<%=movie.rating%> </p></h6>
+          <h6><p class="card-text">Released_on :<%=movie.released_on%></p></h6>
+          <%= link_to 'Reviews', movie %>
+        </div>
+      <% end %>
+      </div>
+      <%= will_paginate @clients,previous_label:'&laquo;',next_label: '&raquo;',list_classes: %w(pagination justify-content-end) %> 
+    </section>
+
+    <section class="popular-movies">
+      <h2>Popular Movies</h2>
+      <div class="movie-grid">
+      <% @movies.each do |movie| %>
+        <div class="movie">
+          <%=image_tag movie.image, class: "style_image" %> 
+          <h3>Movie 1</h3>
+          <p>Director: John Doe</p>
+          <p>Genre: Action</p>
+        </div>
+      <% end %>
+      </div>
+        <!-- Add movie elements here -->
+      </div>
+    </section>
+
+    <!-- Add more sections for top-rated movies, popular TV shows, etc. -->
+  </main>
+
+  <footer>
+    <!-- Footer content -->
+  </footer>
 <% if user_signed_in? && current_user.admin? %>
 <%= link_to "New Movie", new_movie_path %>
 <% end %>
-<%= will_paginate @posts %>
+
+
+
+ 
+
+
+
+
+
+
+
 
 

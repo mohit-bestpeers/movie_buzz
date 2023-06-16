@@ -1,7 +1,7 @@
 <%=  form_for(@review, url: movie_review_path(@movie)) do |form| %>
   <div>
     <%= form.label :star %><br>
-    <%= form.number_field :star %>
+   <%= form.select :star, options_for_select(1..5), {}, class: "form-control" %>
   </div>
   <div>
     <%= form.label :body %><br>

@@ -11,7 +11,7 @@
 
   <div>
     <%= form.label :rating %><br>
-    <%= form.text_field :rating %><br>
+    <%= form.select :rating, options_for_select(1..5), {}, class: "form-control" %>
     <% @movie.errors.full_messages_for(:rating).each do |message| %>
       <div><%= message %></div>
     <% end %>
