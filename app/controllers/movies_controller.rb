@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   before_action :authenticate_user! ,only: [:create,:edit,:destroy,:update]
   
   def index
-    @movies =  Movie.paginate(page: params[:page], per_page: 3)
+    @movies =  Movie.paginate(page: params[:page], per_page: 4)
   end
 
   def show
@@ -16,7 +16,8 @@ class MoviesController < ApplicationController
   def create 
     @movie = current_user.movies.new(movie_params)
     if @movie.save
-      redirect_to @movie
+      redirect_to @movie,
+      notice: "Successfully created movie!"
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,7 +31,8 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
 
     if @movie.update(movie_params)
-      redirect_to @movie
+      redirect_to @movie,
+      notice: "Successfully Updated your Movie Name!"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -40,7 +42,8 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @movie.destroy
 
-    redirect_to root_path, status: :see_other
+    redirect_to root_path, status: :see_other,
+    notice: "Successfully Deleted Movie!"
   end
 
   private
