@@ -1,14 +1,16 @@
-
 <h1> Welcome to movies hub </h1>
-
+<div class='movies'>
 <% @movies.each do |movie|%>
-   <li>
+  
+   <li id='mov'>
       <%= link_to movie.name, movie %>
+      <%= image_tag movie.image ,size:20*20 %>
    </li>
 <%end%>
+</div>
 <% if user_signed_in? && current_user.admin? %>
 <%= link_to "New Movie", new_movie_path %>
 <% end %>
-
+<%= will_paginate @posts %>
 
 
