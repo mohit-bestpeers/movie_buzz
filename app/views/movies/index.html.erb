@@ -23,16 +23,13 @@
       <div class="movie">
         <%=image_tag movie.image, class: "style_image" %> 
         <h5 class="card-title">Movie : <%=movie.name%></h5>
-        <% if !(movie.released_on > Date.today) %>
-        <h6><p class="card-text">Rating :<%=movie.rating%><span class="fa fa-star checked"></p></h6>
-        <% end %>
         <h6><p class="card-text">Released_on :<%=movie.released_on%></p></h6>
         <%= link_to 'Details', movie %>
       </div>
     <% end %>
     <% end %>
     </div>
-    <%= will_paginate @clients,previous_label:'&laquo;',next_label: '&raquo;',list_classes: %w(pagination justify-content-end) %> 
+    <%= will_paginate @Movies,previous_label:'&laquo;',next_label: '&raquo;',list_classes: %w(pagination justify-content-end) %> 
   </section>
 
   <!-- Add more sections for top-rated movies, popular TV shows, etc. -->

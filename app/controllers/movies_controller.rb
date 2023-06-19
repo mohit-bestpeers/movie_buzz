@@ -47,7 +47,7 @@ class MoviesController < ApplicationController
   end
   
   def upcomming
-    @movies=Movie.where("released_on > ?" ,Date.today)
+    @movies = Movie.where("released_on > ?",Date.today)
   end
 
   private
