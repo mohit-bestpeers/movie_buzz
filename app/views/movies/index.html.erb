@@ -1,42 +1,38 @@
-
-  <header>
-    Welcome To MovieBuzz
-  </header>
-  <main>
-    <section class="featured-movies">
-      <h2>Featured Movies</h2>
-      <div class="movie-grid margin">
-      <% @movies.each do |movie| %>
-        <div class="movie">
-          <%=image_tag movie.image, class: "style_image" %> 
-          <h5 class="card-title">Movie :<%=movie.name%></h5>
-          <h6><p class="card-text">Rating :<%=movie.rating%> </p></h6>
-          <h6><p class="card-text">Released_on :<%=movie.released_on%></p></h6>
-          <%= link_to 'Reviews', movie %>
-        </div>
-      <% end %>
+<main>
+  <section class="featured-movies">
+    <h2>Featured Movies</h2>
+    <div class="movie-grid margin">
+    <% @movies.each do |movie| %>
+      <div class="movie">
+        <%=image_tag movie.image, class: "style_image" %> 
+        <h5 class="card-title">Movie : <%=movie.name%></h5>
+        <h6><p class="card-text">Rating :<%=movie.rating%><span class="fa fa-star checked"></p></h6>
+        <h6><p class="card-text">Released_on :<%=movie.released_on%></p></h6>
+        <%= link_to 'Reviews', movie %>
       </div>
-      <%= will_paginate @clients,previous_label:'&laquo;',next_label: '&raquo;',list_classes: %w(pagination justify-content-end) %> 
-    </section>
+    <% end %>
+    </div>
+    <%= will_paginate @clients,previous_label:'&laquo;',next_label: '&raquo;',list_classes: %w(pagination justify-content-end) %> 
+  </section>
 
-    <section class="popular-movies">
-      <h2>Popular Movies</h2>
-      <div class="movie-grid">
-      <% @movies.each do |movie| %>
-        <div class="movie">
-          <%=image_tag movie.image, class: "style_image" %> 
-          <h3>Movie 1</h3>
-          <p>Director: John Doe</p>
-          <p>Genre: Action</p>
-        </div>
-      <% end %>
+  <section class="popular-movies">
+    <h2>Popular Movies</h2>
+    <div class="movie-grid">
+    <% @movies.each do |movie| %>
+      <div class="movie">
+        <%=image_tag movie.image, class: "style_image" %> 
+        <h3>Movie 1</h3>
+        <p>Director: John Doe</p>
+        <p>Genre: Action</p>
       </div>
-        <!-- Add movie elements here -->
-      </div>
-    </section>
+    <% end %>
+    </div>
+      <!-- Add movie elements here -->
+    </div>
+  </section>
 
-    <!-- Add more sections for top-rated movies, popular TV shows, etc. -->
-  </main>
+  <!-- Add more sections for top-rated movies, popular TV shows, etc. -->
+</main>
 
   <footer>
     <!-- Footer content -->
