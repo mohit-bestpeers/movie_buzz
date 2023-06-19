@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user! ,only: [:create,:edit,:destroy,:update]
-  before_action :movies_id ,only: [:create,:edit,:destroy,:update]
+  before_action :movie_object ,only: [:create,:edit,:destroy,:update]
   before_action :movie_review ,only: [:edit,:destroy,:update]
 
   def create
@@ -48,8 +48,8 @@ class ReviewsController < ApplicationController
 
   private
 
-  def movies_id
-    @movie =Movie.find(params[:movie_id])
+  def movie_object
+    @movie = Movie.find(params[:movie_id])
   end
 
 end

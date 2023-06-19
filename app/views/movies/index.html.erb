@@ -1,6 +1,6 @@
 <main>
   <section class="featured-movies">
-    <h2>Featured Movies</h2>
+    <h2>Movies</h2>
     <div class="movie-grid margin">
     <% @movies.each do |movie| %>
       <div class="movie">
@@ -8,27 +8,28 @@
         <h5 class="card-title">Movie : <%=movie.name%></h5>
         <h6><p class="card-text">Rating :<%=movie.rating%><span class="fa fa-star checked"></p></h6>
         <h6><p class="card-text">Released_on :<%=movie.released_on%></p></h6>
-        <%= link_to 'Reviews', movie %>
+        <%= link_to 'Details', movie %>
       </div>
     <% end %>
     </div>
     <%= will_paginate @clients,previous_label:'&laquo;',next_label: '&raquo;',list_classes: %w(pagination justify-content-end) %> 
   </section>
 
-  <section class="popular-movies">
-    <h2>Popular Movies</h2>
-    <div class="movie-grid">
+   <section class="featured-movies">
+    <h2>Featured Movies</h2>
+    <div class="movie-grid margin">
     <% @movies.each do |movie| %>
+      <% if movie.released_on > Date.today %>
       <div class="movie">
         <%=image_tag movie.image, class: "style_image" %> 
-        <h3>Movie 1</h3>
-        <p>Director: John Doe</p>
-        <p>Genre: Action</p>
+        <h5 class="card-title">Movie : <%=movie.name%></h5>
+        <h6><p class="card-text">Released_on :<%=movie.released_on%></p></h6>
+        <%= link_to 'Details', movie %>
       </div>
     <% end %>
+    <% end %>
     </div>
-      <!-- Add movie elements here -->
-    </div>
+    <%= will_paginate @Movies,previous_label:'&laquo;',next_label: '&raquo;',list_classes: %w(pagination justify-content-end) %> 
   </section>
 
   <!-- Add more sections for top-rated movies, popular TV shows, etc. -->

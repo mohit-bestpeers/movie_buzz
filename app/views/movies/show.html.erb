@@ -1,59 +1,64 @@
 <div class="container">
-    <div class="image">
-      <%= image_tag @movie.image ,size:20*20 %>
-    </div>
-    <div class="details">
+  <div class="image">
+    <%= image_tag @movie.image ,size:20*20 %>
+  </div>
+  <div class="details">
     <h3>Movie : <%= @movie.name %></h3>
-     <p><span class='size'>Director :  </span><%= @movie.director %></p>
-    <p><span class='size'>Rating : </span><%= @movie.rating %><span class="fa fa-star checked"></span></p>
+    <p><span class='size'>Director :  </span><%= @movie.director %></p>
+    <% if !(@movie.released_on > Date.today)  %>
+      <p><span class='size'>Rating : </span><%= @movie.rating %><span class="fa fa-star checked"></span></p>
+    <% end %>
     <p><span class='size'>Description :  </span><%= @movie.description %></p>
     <p><span class='size'>Released On : </span><%= @movie.released_on %></p>
     <% if user_signed_in? && current_user.admin? %>
-    <button type="button" class="btn btn-outline-warning"><%= link_to "Edit Movie", edit_movie_path ,class: "custom-link" %></button>
-    <button type="button" class="btn btn-outline-warning"><%= link_to "Destroy", movie_path(@movie),class: "custom-link", data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %>
-    </button>
+      <button type="button" class="btn btn-outline-warning"><%= link_to "Edit Movie", edit_movie_path ,class: "custom-link" %></button>
+      <button type="button" class="btn btn-outline-warning"><%= link_to "Destroy", movie_path(@movie),class: "custom-link", data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+              } %>
+      </button>
     <% end %>
     <hr>
-    </div>
   </div>
+</div>
  
 
 <div class="container">
-<div class="details">
-<h2>Reviews</h2>
-<% @movie.reviews.each do |review| %>
-<p><span class='size'>Star :  </span><%= review.star %></p>
-<p><span class='size'>Comment :  </span><%= review.body %></p>
-  <% if user_signed_in? && current_user.id == review.user_id || user_signed_in? && current_user.admin? %>
-    <button type="button" class="btn btn-outline-warning"><%= link_to "Edit Review", edit_movie_review_path(@movie,review),class: "custom-link" %></button>
-    <button type="button" class="btn btn-outline-warning"><%= link_to "Destroy", movie_review_path(@movie,review), data: {
-                      turbo_method: :delete,
-                      turbo_confirm: "Are you sure?"
-                    } ,class: "custom-link" %></button>
-  <% end %>
-<% end %>
-</div>
+  <div class="details">
+    <% if !(@movie.released_on > Date.today)  %>
+      <h2>Reviews</h2>
+      <% @movie.reviews.each do |review| %>
+        <p><span class='size'>Star :  </span><%= review.star %></p>
+        <p><span class='size'>Comment :  </span><%= review.body %></p>
+        <% if user_signed_in? && current_user.id == review.user_id || user_signed_in? && current_user.admin? %>
+          <button type="button" class="btn btn-outline-warning"><%= link_to "Edit Review", edit_movie_review_path(@movie,review),class: "custom-link" %></button>
+          <button type="button" class="btn btn-outline-warning"><%= link_to "Destroy", movie_review_path(@movie,review), data: {
+                            turbo_method: :delete,
+                            turbo_confirm: "Are you sure?"
+                          } ,class: "custom-link" %>
+          </button>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 <div class="container">
-<div class="details">
-<% if user_signed_in? && current_user.reviews %>
-  <h2>Add a Review:</h2>
-  <%= form_with model: [ @movie, @movie.reviews.build ] do |form| %>
-    <p>
-      <%= form.label :star %><br>
-      <%= form.select :star, options_for_select(1..5), {}, class: "form-control" %>
-    </p>
-    <p>
-      <%= form.label :body %><br>
-      <%= form.text_area :body %>
-    </p>
-    <p>
-      <%= form.submit %> 
-    </p>
-  <% end %>
-<% end %>
-</div>
+  <div class="details">
+    <% if user_signed_in? && current_user.reviews && !(@movie.released_on > Date.today)  %>
+      <h2>Add a Review:</h2>
+      <%= form_with model: [ @movie, @movie.reviews.build ] do |form| %>
+        <p>
+          <%= form.label :star %><br>
+          <%= form.select :star, options_for_select(1..5), {}, class: "form-control" %>
+        </p>
+        <p>
+          <%= form.label :body %><br>
+          <%= form.text_area :body %>
+        </p>
+        <p>
+          <%= form.submit %> 
+        </p>
+      <% end %>
+    <% end %>
+  </div>
 </div>
