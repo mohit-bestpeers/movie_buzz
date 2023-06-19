@@ -45,6 +45,10 @@ class MoviesController < ApplicationController
     redirect_to root_path, status: :see_other,
     notice: "Successfully Deleted Movie!"
   end
+  
+  def upcomming
+    @movies=Movie.where("released_on > ?" ,Date.today)
+  end
 
   private
   def movie_params
