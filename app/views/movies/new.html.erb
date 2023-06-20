@@ -10,6 +10,11 @@
   </div>
 
   <div>
+    <%= form.label :category %>
+    <%= form.select :category_id, options_for_select(Category.all.map { |category| [category.name, category.id]})%>
+  </div>
+
+  <div>
   <%= form.label :description %><br>
   <%= form.text_area :description %><br>
   <% @movie.errors.full_messages_for(:description).each do |message| %>
