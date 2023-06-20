@@ -50,6 +50,10 @@ class MoviesController < ApplicationController
     @movies = Movie.where("released_on > ?",Date.today)
   end
 
+  def popular_movie
+    @popular_movies = Movie.where("rating >= 3.5")
+  end
+
   private
   
   def movie_params

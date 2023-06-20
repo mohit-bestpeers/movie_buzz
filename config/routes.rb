@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'movies#index'
   get "/upcomming", to: "movies#upcomming"
+  get "/popular", to: "movies#popular_movie"
 
   resources :movies do
     resources :reviews
