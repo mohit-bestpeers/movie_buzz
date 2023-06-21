@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'movies#index'
   get "/upcomming", to: "movies#upcomming"
   get "/popular", to: "movies#popular_movie"
+  get "/hollywood/:id", to: "category#hollywood"
 
   resources :movies do
     resources :reviews

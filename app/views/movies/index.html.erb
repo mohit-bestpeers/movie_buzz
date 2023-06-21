@@ -4,8 +4,9 @@
     <div class="movie-grid margin">
     <% @movies.each do |movie| %>
       <div class="movie">
-        <%=image_tag movie.image, class: "style_image" %> 
+        <%=image_tag movie.image ,class: "style_image" %> 
         <h5 class="card-title">Movie : <%=movie.name%></h5>
+        <h6><p class="card-text">Type :<%= movie.category.name %></p></h6>
         <h6><p class="card-text">Rating :<%=movie.rating%><span class="fa fa-star checked"></p></h6>
         <h6><p class="card-text">Released_on :<%=movie.released_on%></p></h6>
         <%= link_to 'Details', movie %>

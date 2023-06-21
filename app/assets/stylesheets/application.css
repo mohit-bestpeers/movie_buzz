@@ -82,9 +82,10 @@ body{
  }
 
  .style_image{
- height: 200px;
- width:100px;
-
+  max-width: 100%;
+  height: auto; 
+  object-fit: cover;
+  background-size: contain;    
  }
 
  .container {

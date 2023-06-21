@@ -9,7 +9,7 @@
     <% if !(@movie.released_on > Date.today)  %>
       <p><span class='size'>Rating : </span><%= @movie.rating %><span class="fa fa-star checked"></span></p>
     <% end %>
-    <p><span class='size'>Description :  </span><%= @movie.description %></p>
+    <p><span class='size'>Storyline :  </span><%= @movie.description %></p>
     <p><span class='size'>Released On : </span><%= @movie.released_on %></p>
     <% if user_signed_in? && current_user.admin? %>
       <button type="button" class="btn btn-outline-warning"><%= link_to "Edit Movie", edit_movie_path ,class: "custom-link" %></button>
