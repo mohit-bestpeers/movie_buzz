@@ -4,4 +4,8 @@ class CategoryController < ApplicationController
     @category = Category.find(params[:id])
   end
 
+  def bollywood
+    @category = Category.find(params[:id])
+  end
+
 end
