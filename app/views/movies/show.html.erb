@@ -1,14 +1,15 @@
 <div class="container">
   <div class="image">
-    <%= image_tag @movie.image ,size:20*20 %>
+    <%= image_tag @movie.image ,size:20*20,class: "style_image" %>
   </div>
   <div class="details">
     <h3>Movie : <%= @movie.name %></h3>
+    <p><span class='size'>Type :  </span><%=  @movie.category.name %></p>
     <p><span class='size'>Director :  </span><%= @movie.director %></p>
     <% if !(@movie.released_on > Date.today)  %>
       <p><span class='size'>Rating : </span><%= @movie.rating %><span class="fa fa-star checked"></span></p>
     <% end %>
-    <p><span class='size'>Description :  </span><%= @movie.description %></p>
+    <p><span class='size'>Storyline :  </span><%= @movie.description %></p>
     <p><span class='size'>Released On : </span><%= @movie.released_on %></p>
     <% if user_signed_in? && current_user.admin? %>
       <button type="button" class="btn btn-outline-warning"><%= link_to "Edit Movie", edit_movie_path ,class: "custom-link" %></button>
@@ -19,13 +20,7 @@
       </button>
     <% end %>
     <hr>
-  </div>
-</div>
- 
-
-<div class="container">
-  <div class="details">
-    <% if !(@movie.released_on > Date.today)  %>
+     <% if !(@movie.released_on > Date.today)  %>
       <h2>Reviews</h2>
       <% @movie.reviews.each do |review| %>
         <p><span class='size'>Star :  </span><%= review.star %></p>
@@ -37,15 +32,15 @@
                             turbo_confirm: "Are you sure?"
                           } ,class: "custom-link" %>
           </button>
+          <hr>
         <% end %>
       <% end %>
     <% end %>
-  </div>
-</div>
-<div class="container">
+    <hr>
+
   <div class="details">
     <% if user_signed_in? && current_user.reviews && !(@movie.released_on > Date.today)  %>
-      <h2>Add a Review:</h2>
+      <h3>Add a Review:</h3>
       <%= form_with model: [ @movie, @movie.reviews.build ] do |form| %>
         <p>
           <%= form.label :star %><br>
@@ -61,4 +56,7 @@
       <% end %>
     <% end %>
   </div>
+  
+  </div>
 </div>
+ 
