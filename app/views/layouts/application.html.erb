@@ -16,7 +16,7 @@
 
   <body>
   <header class="border nav1 p-3">
-  <i class="i bi bi-camera"></i>
+  <i class="bi bi-eye fa-lg"></i>
   <div class="container">
 
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -37,10 +37,11 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="http://127.0.0.1:3000/hollywood/1">HollyWood</a>
               <a class="dropdown-item" href="http://127.0.0.1:3000/bollywood/2">Bollywood</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="http://127.0.0.1:3000/action/3">Action</a>
+              <a class="dropdown-item" href="http://127.0.0.1:3000/comedy/4">Comedy</a>
+              <a class="dropdown-item" href="http://127.0.0.1:3000/romance/5">Romance</a>
             </div>
           </li>
-        <li><a href="#" class="nav-link link-warning px-2 text-white">FAQs</a></li>
         <li><a href="#" class="nav-link link-warning px-2 text-white">About</a></li>
       </ul>
 
@@ -61,7 +62,9 @@
     </div>
   </div>
 </header>
-
+<div class="text-right">
+<button type="button" class="btn btn-success"><a href="http://127.0.0.1:3000/movies/new" class="nav-link link-warning px-2 text-white ">Add Movie</a></button>
+</div>
 <% if notice %> <p class="alert alert-success"><%= notice %></p>
  <% end %> 
  <% if alert %> <p class="alert alert-danger"><%= alert %></p> 
