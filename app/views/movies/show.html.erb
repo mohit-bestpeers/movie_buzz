@@ -1,6 +1,6 @@
 <div class="container">
   <div class="image">
-    <%= image_tag @movie.image ,size:20*20 %>
+    <%= image_tag @movie.image ,size:20*20,class: "style_image" %>
   </div>
   <div class="details">
     <h3>Movie : <%= @movie.name %></h3>
@@ -20,13 +20,7 @@
       </button>
     <% end %>
     <hr>
-  </div>
-</div>
- 
-
-<div class="container">
-  <div class="details">
-    <% if !(@movie.released_on > Date.today)  %>
+     <% if !(@movie.released_on > Date.today)  %>
       <h2>Reviews</h2>
       <% @movie.reviews.each do |review| %>
         <p><span class='size'>Star :  </span><%= review.star %></p>
@@ -41,12 +35,11 @@
         <% end %>
       <% end %>
     <% end %>
-  </div>
-</div>
-<div class="container">
+    <hr>
+
   <div class="details">
     <% if user_signed_in? && current_user.reviews && !(@movie.released_on > Date.today)  %>
-      <h2>Add a Review:</h2>
+      <h3>Add a Review:</h3>
       <%= form_with model: [ @movie, @movie.reviews.build ] do |form| %>
         <p>
           <%= form.label :star %><br>
@@ -62,4 +55,9 @@
       <% end %>
     <% end %>
   </div>
+
+
+     
+  </div>
 </div>
+ 
