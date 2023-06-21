@@ -13,7 +13,7 @@
       </div>
     <% end %>
     </div>
-    <%= will_paginate @clients,previous_label:'&laquo;',next_label: '&raquo;',list_classes: %w(pagination justify-content-end) %> 
+    <%= will_paginate @movies,previous_label:'&laquo;',next_label: '&raquo;',list_classes: %w(pagination justify-content-end) %> 
   </section>
 
   <section class="featured-movies">
@@ -30,7 +30,7 @@
     <% end %>
     <% end %>
     </div>
-    <%= will_paginate @Movies,previous_label:'&laquo;',next_label: '&raquo;',list_classes: %w(pagination justify-content-end) %> 
+    <%= will_paginate @feature,previous_label:'&laquo;',next_label: '&raquo;',list_classes: %w(pagination justify-content-end) %> 
   </section>
 
   <section class="featured-movies">
@@ -48,7 +48,7 @@
     <% end %>
      <% end %>
     </div>
-    <%= will_paginate @clients,previous_label:'&laquo;',next_label: '&raquo;',list_classes: %w(pagination justify-content-end) %> 
+    <%= will_paginate @popular,previous_label:'&laquo;',next_label: '&raquo;',list_classes: %w(pagination justify-content-end) %> 
   </section>
 
 </main>
