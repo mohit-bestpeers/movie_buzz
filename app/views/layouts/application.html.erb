@@ -29,14 +29,19 @@
               Category
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="http://127.0.0.1:3000/category/?category=hollywood">Hollywood</a>
-              <a class="dropdown-item" href="http://127.0.0.1:3000/category/?category=bollywood">Bollywood</a>
+              <a class="dropdown-item" href="http://127.0.0.1:3000/category/?category=Hollywood">Hollywood</a>
+              <a class="dropdown-item" href="http://127.0.0.1:3000/category/?category=Bollywood">Bollywood</a>
               <a class="dropdown-item" href="http://127.0.0.1:3000/category/?category=Action">Action</a>
               <a class="dropdown-item" href="http://127.0.0.1:3000/category/?category=Comedy">Comedy</a>
               <a class="dropdown-item" href="http://127.0.0.1:3000/category/?category=Romance">Romance</a>
             </div>
           </li>
-        <li><a href="http://127.0.0.1:3000/about" class="nav-link link-warning px-2 text-white me-md-2">About</a></li>
+        <li><a href="http://127.0.0.1:3000/about" class="nav-link link-warning px-2 text-white ">About</a></li>
+        <% if user_signed_in? && current_user.admin? %>
+          <li class="nav-item">
+            <a href="http://127.0.0.1:3000/movies/new" class="nav-link link-warning px-2 text-white me-md-2">New Article</a>
+          </li>
+        <% end %>      
       </ul>
 
       <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -58,16 +63,27 @@
   </div>
   
 </header>
-<% if user_signed_in? && current_user.admin? %>
-  <div class="text-right d-grid gap-2 d-md-flex justify-content-md-end">
-    <button type="button" class="btn btn-success d-inline mt-2 me-md-2"><a href="http://127.0.0.1:3000/movies/new" class="nav-link link-warning px-2 text-white ">Add Movie</a></button>
-  </div>
+<% if notice %> <p id="notice" class="alert alert-success"><%= notice %></p>
 <% end %> 
-<% if notice %> <p class="alert alert-success"><%= notice %></p>
-<% end %> 
-<% if alert %> <p class="alert alert-danger"><%= alert %></p> 
+<% if alert %> <p  id="alert" class="alert alert-danger"><%= alert %></p> 
 <% end %>
 <%= yield %>
+
+<script>
+  setTimeout(function() {
+    var noticeElement = document.getElementById("notice");
+    if (noticeElement) {
+      noticeElement.style.display = "none";
+    }
+  }, 4000);
+  setTimeout(function() {
+    var alertElement = document.getElementById("alert");
+    if (alertElement) {
+      alertElement.style.display = "none";
+    }
+  }, 4000);
+</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
