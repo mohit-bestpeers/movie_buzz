@@ -1,8 +1,8 @@
 class MoviesController < ApplicationController
   before_action :authenticate_user! ,only: [:create,:edit,:destroy,:update]
   
-  def index
-    @movies =Movie.all
+  def index 
+    @movies = Movie.all
   end
 
   def show

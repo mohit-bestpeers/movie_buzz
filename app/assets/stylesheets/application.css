@@ -137,5 +137,13 @@ a:link, a:visited {
     background-color: rgba(226, 214, 223, 0.24);
     border-radius: 4px;
   }
+.center{
+  position: absolute;
+  top: 25%;
+  left: 35%;
+  border: 2px solid #0f0d0d;
+  padding: 20px;
+  background-color: rgb(102, 187, 187);
+}
   
  
