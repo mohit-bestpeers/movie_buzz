@@ -2,9 +2,9 @@ class MoviesController < ApplicationController
   before_action :authenticate_user! ,only: [:create,:edit,:destroy,:update]
   
   def index
-    if params[:upcomming] == "1"
+    if params[:filter] == "upcomming"
       @upcomming_movies= Movie.where("released_on > ?",Date.today)
-    elsif params[:popular] == "1"
+    elsif params[:filter] == "popular"
       @popular_movies = Movie.where("rating >= 3.5")
     else
       @movies = Movie.all
