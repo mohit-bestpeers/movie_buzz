@@ -127,7 +127,7 @@ body{
 
 a:link, a:visited {
  
-  padding: 4px 9px;
+  padding: 4px 8px;
   text-align: center; 
   text-decoration: none;
   display: inline-block;
@@ -146,5 +146,6 @@ a:link, a:visited {
   background-color: rgb(102, 187, 187);
   
 }
+
   
  

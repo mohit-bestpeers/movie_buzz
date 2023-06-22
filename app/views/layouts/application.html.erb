@@ -22,8 +22,8 @@
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
         <li ><a href="http://127.0.0.1:3000/#" class="nav-link link-warning px-2 text-white click">Home</a></li>
-        <li><a href="http://127.0.0.1:3000/upcomming#" class="nav-link link-warning px-2 text-white">Upcommig Movies </a></li>
-        <li><a href="http://127.0.0.1:3000/popular" class="nav-link link-warning px-2 text-white">Popular Movies</a></li>  
+        <li><a href="http://127.0.0.1:3000/?upcomming=1" class="nav-link link-warning px-2 text-white">Upcommig Movies </a></li>
+        <li><a href="http://127.0.0.1:3000/?popular=1" class="nav-link link-warning px-2 text-white">Popular Movies</a></li>  
         <li class="nav-item dropdown">
             <a class="nav-link link-warning px-2 text-white dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Category
@@ -36,7 +36,7 @@
               <a class="dropdown-item" href="http://127.0.0.1:3000/romance/5">Romance</a>
             </div>
           </li>
-        <li><a href="#" class="nav-link link-warning px-2 text-white me-md-2">About</a></li>
+        <li><a href="http://127.0.0.1:3000/about" class="nav-link link-warning px-2 text-white me-md-2">About</a></li>
       </ul>
 
       <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -51,14 +51,16 @@
         <% else %>
         <button type="button" class="btn me-2  btn-outline-warning "><a href="http://127.0.0.1:3000/users/sign_in" class="nav-link link-warning px-2 text-white">Login</a></button> 
         <button type="button" class="btn me-2  btn-outline-warning"><a href="http://127.0.0.1:3000/users/sign_up" class="nav-link link-warning px-2 text-white">Sign up</a></button> 
-        <% end %>
+      <% end %>
+      
       </div>
     </div>
   </div>
+  
 </header>
 <% if user_signed_in? && current_user.admin? %>
   <div class="text-right d-grid gap-2 d-md-flex justify-content-md-end">
-    <button type="button" class="btn btn-success mt-2 me-md-2"><a href="http://127.0.0.1:3000/movies/new" class="nav-link link-warning px-2 text-white ">Add Movie</a></button>
+    <button type="button" class="btn btn-success d-inline mt-2 me-md-2"><a href="http://127.0.0.1:3000/movies/new" class="nav-link link-warning px-2 text-white ">Add Movie</a></button>
   </div>
 <% end %> 
 <% if notice %> <p class="alert alert-success"><%= notice %></p>

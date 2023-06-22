@@ -1,8 +1,14 @@
 class MoviesController < ApplicationController
   before_action :authenticate_user! ,only: [:create,:edit,:destroy,:update]
   
-  def index 
-    @movies = Movie.all
+  def index
+    if params[:upcomming] == "1"
+      @upcomming_movies= Movie.where("released_on > ?",Date.today)
+    elsif params[:popular] == "1"
+      @popular_movies = Movie.where("rating >= 3.5")
+    else
+      @movies = Movie.all
+    end
   end
 
   def show
@@ -45,13 +51,8 @@ class MoviesController < ApplicationController
     redirect_to root_path, status: :see_other,
     notice: "Successfully Deleted Movie!"
   end
-  
-  def upcomming
-    @movies = Movie.where("released_on > ?",Date.today)
-  end
 
-  def popular_movie
-    @popular_movies = Movie.where("rating >= 3.5")
+  def about
   end
 
   private

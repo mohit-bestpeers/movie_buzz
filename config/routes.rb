@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "/action/:id", to: "category#action"
   get "/romance/:id", to: "category#romance"
   get "/comedy/:id", to: "category#comedy"
+  get "/about" ,to: "movies#about"
 
   resources :movies do
     resources :reviews
