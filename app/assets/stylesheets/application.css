@@ -10,10 +10,6 @@
   color: aqua;
 }
 
-.fc:hover {
-  text-shadow: 2px red 2px;
- 
-}
 .click:active{
   color:darkgoldenrod;
 }
@@ -35,6 +31,7 @@ body{
    padding-top: 80px;
  }
 
+
  header{
    position: fixed;
    width: 100%;
@@ -54,7 +51,7 @@ body{
  }
 
  .movie {
-   border: 1px solid #ddd;
+   border: 1px solid #7a7a7a;
    padding: 20px;
    text-align: center;
  }
@@ -81,6 +78,7 @@ body{
 
  .movie p {
    color: #888;
+
  }
 
  .style_image{
@@ -128,3 +126,28 @@ body{
 .alert{
   text-align: center;
 }
+
+a:link, a:visited {
+ 
+  padding: 4px 8px;
+  text-align: center; 
+  text-decoration: none;
+  display: inline-block;
+  }
+  
+  a:hover, a:active {
+    background-color: rgba(226, 214, 223, 0.24);
+    border-radius: 4px;
+  }
+.center{
+  position: absolute;
+  top: 25%;
+  left: 35%;
+  border: 2px solid #f8f1f1;
+  padding: 20px;
+  background-color: rgb(102, 187, 187);
+  
+}
+
+  
+ 

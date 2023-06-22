@@ -16,33 +16,32 @@
 
   <body>
   <header class="border nav1 p-3">
-  <i class="bi bi-eye fa-lg"></i>
   <div class="container">
 
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-          <use xlink:href="#bootstrap"></use>
-        </svg>
-      </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="http://127.0.0.1:3000/#" class="nav-link link-warning px-2 text-white click">Home</a></li>
-        <li><a href="http://127.0.0.1:3000/upcomming#" class="nav-link link-warning px-2 text-white">Upcommig Movies </a></li>
-        <li><a href="http://127.0.0.1:3000/popular" class="nav-link link-warning px-2 text-white">Popular Movies</a></li>  
+        <li ><a href="http://127.0.0.1:3000/#" class="nav-link link-warning px-2 text-white click">Home</a></li>
+        <li><a href="http://127.0.0.1:3000/?filter=upcomming" class="nav-link link-warning px-2 text-white">Upcommig Movies </a></li>
+        <li><a href="http://127.0.0.1:3000/?filter=popular" class="nav-link link-warning px-2 text-white">Popular Movies</a></li>  
         <li class="nav-item dropdown">
             <a class="nav-link link-warning px-2 text-white dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Category
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="http://127.0.0.1:3000/hollywood/1">HollyWood</a>
-              <a class="dropdown-item" href="http://127.0.0.1:3000/bollywood/2">Bollywood</a>
-              <a class="dropdown-item" href="http://127.0.0.1:3000/action/3">Action</a>
-              <a class="dropdown-item" href="http://127.0.0.1:3000/comedy/4">Comedy</a>
-              <a class="dropdown-item" href="http://127.0.0.1:3000/romance/5">Romance</a>
+              <a class="dropdown-item" href="http://127.0.0.1:3000/category/?category=Hollywood">Hollywood</a>
+              <a class="dropdown-item" href="http://127.0.0.1:3000/category/?category=Bollywood">Bollywood</a>
+              <a class="dropdown-item" href="http://127.0.0.1:3000/category/?category=Action">Action</a>
+              <a class="dropdown-item" href="http://127.0.0.1:3000/category/?category=Comedy">Comedy</a>
+              <a class="dropdown-item" href="http://127.0.0.1:3000/category/?category=Romance">Romance</a>
             </div>
           </li>
-        <li><a href="#" class="nav-link link-warning px-2 text-white">About</a></li>
+        <li><a href="http://127.0.0.1:3000/about" class="nav-link link-warning px-2 text-white ">About</a></li>
+        <% if user_signed_in? && current_user.admin? %>
+          <li class="nav-item">
+            <a href="http://127.0.0.1:3000/movies/new" class="nav-link link-warning px-2 text-white me-md-2">New Article</a>
+          </li>
+        <% end %>      
       </ul>
 
       <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -55,23 +54,38 @@
         <button type="button" class="btn btn-outline-warning me-2  "><a href="http://127.0.0.1:3000/users/edit" class="nav-link link-warning px-2 text-white">Edit Info</a></button>
         <button type="button" class="btn me-2 btn-outline-warning"><a href="http://127.0.0.1:3000/users/sign_out" class="nav-link link-warning px-2 text-white">Logout</a></button>
         <% else %>
-        <button type="button" class="btn me-2  btn-outline-warning"><a href="http://127.0.0.1:3000/users/sign_in" class="nav-link link-warning px-2 text-white">Login</a></button> 
+        <button type="button" class="btn me-2  btn-outline-warning "><a href="http://127.0.0.1:3000/users/sign_in" class="nav-link link-warning px-2 text-white">Login</a></button> 
         <button type="button" class="btn me-2  btn-outline-warning"><a href="http://127.0.0.1:3000/users/sign_up" class="nav-link link-warning px-2 text-white">Sign up</a></button> 
-        <% end %>
+      <% end %>
+      
       </div>
     </div>
   </div>
+  
 </header>
-<div class="text-right">
-<button type="button" class="btn btn-success"><a href="http://127.0.0.1:3000/movies/new" class="nav-link link-warning px-2 text-white ">Add Movie</a></button>
-</div>
-<% if notice %> <p class="alert alert-success"><%= notice %></p>
- <% end %> 
- <% if alert %> <p class="alert alert-danger"><%= alert %></p> 
- <% end %>
-  <%= yield %>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<% if notice %> <p id="notice" class="alert alert-success"><%= notice %></p>
+<% end %> 
+<% if alert %> <p  id="alert" class="alert alert-danger"><%= alert %></p> 
+<% end %>
+<%= yield %>
+
+<script>
+  setTimeout(function() {
+    var noticeElement = document.getElementById("notice");
+    if (noticeElement) {
+      noticeElement.style.display = "none";
+    }
+  }, 4000);
+  setTimeout(function() {
+    var alertElement = document.getElementById("alert");
+    if (alertElement) {
+      alertElement.style.display = "none";
+    }
+  }, 4000);
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   </body>
 </html>
