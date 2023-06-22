@@ -10,10 +10,6 @@
   color: aqua;
 }
 
-.fc:hover {
-  text-shadow: 2px red 2px;
- 
-}
 .click:active{
   color:darkgoldenrod;
 }
@@ -128,3 +124,18 @@ body{
 .alert{
   text-align: center;
 }
+
+a:link, a:visited {
+ 
+  padding: 4px 9px;
+  text-align: center; 
+  text-decoration: none;
+  display: inline-block;
+  }
+  
+  a:hover, a:active {
+    background-color: rgba(226, 214, 223, 0.24);
+    border-radius: 4px;
+  }
+  
+ 
