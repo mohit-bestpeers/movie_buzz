@@ -1,7 +1,7 @@
-<main>
+
 <% if  @movies != nil %>
   <section class="featured-movies">
-    <h2>Movies</h2>
+    <h2 class='ms-3 mt-2'>Movies</h2>
     <div class="movie-grid margin">
     <% @movies.each do |movie| %>
       <div class="movie">
@@ -16,10 +16,11 @@
     </div>
      <% end %>
   </section>
+  
 
   <section class="featured-movies">
    <% if  @upcomming_movies != nil %>
-    <h2>Popular Movies</h2>
+    <h2 class='ms-3 mt-2'> Upcomming Movies</h2>
     <div class="movie-grid margin">
     <% @upcomming_movies.each do |movie| %>
         <div class="movie">
@@ -36,7 +37,7 @@
 
   <section class="featured-movies">
    <% if  @popular_movies != nil %>
-    <h2>Popular Movies</h2>
+    <h2 class='ms-3 mt-2'>Popular Movies</h2>
     <div class="movie-grid margin">
     <% @popular_movies.each do |movie| %>
       <% if (movie.rating > 3.5)  %>
@@ -52,13 +53,22 @@
     </div>
      <% end %>
   </section>
-
-  
-</main>
-
-  <footer>
-    <!-- Footer content -->
+  <footer class='footer-content'>
+  <h3>Movie Buzz</h3>
+  <p>Welcome to Movie Buzz, your ultimate destination for all things cinema! Our app is designed to provide you with the latest updates, reviews, trailers,and news about your favorite movies and TV shows.With a user-friendly interface and a vast collection of content, we strive to keep you informed and entertained.</p>
+  <ul class="socials">
+   <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+   <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+   <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+   <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+   <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+</ul>
+<div class="footer-bottom">
+  <p>copyright &copy;2023 <a href="http://127.0.0.1:3000/">Movie Buzz</a>| Design By @ Mohit Bodkhe  </p>
+</div>
   </footer>
+
+
 
 
  
