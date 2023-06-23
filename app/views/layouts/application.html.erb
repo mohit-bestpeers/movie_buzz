@@ -22,11 +22,11 @@
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
        
-        <li ><a href="http://127.0.0.1:3000/#" class="nav-link link-warning px-2 text-white click">Home</a></li>
-        <li><a href="http://127.0.0.1:3000/?filter=upcomming" class="nav-link link-warning px-2 text-white">Upcommig Movies </a></li>
-        <li><a href="http://127.0.0.1:3000/?filter=popular" class="nav-link link-warning px-2 text-white">Popular Movies</a></li>  
+        <li ><a href="http://127.0.0.1:3000/#" class="nav-link link-warning px-2 text-white click mt-1">Home</a></li>
+        <li><a href="http://127.0.0.1:3000/?filter=upcomming" class="nav-link link-warning px-2 text-white  mt-1">Upcommig Movies </a></li>
+        <li><a href="http://127.0.0.1:3000/?filter=popular" class="nav-link link-warning px-2 text-white  mt-1">Popular Movies</a></li>  
         <li class="nav-item dropdown">
-            <a class="nav-link link-warning px-2 text-white dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link link-warning px-2 text-white dropdown-toggle  mt-1" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Category
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -38,10 +38,10 @@
             </div>
           </li>
           
-        <li><a href="http://127.0.0.1:3000/about" class="nav-link link-warning px-2 text-white ">About</a></li>
+        <li><a href="http://127.0.0.1:3000/about" class="nav-link link-warning px-2 text-white  mt-1 ">About</a></li>
         <% if user_signed_in? && current_user.admin? %>
           <li class="nav-item">
-            <a href="http://127.0.0.1:3000/movies/new" class="nav-link link-warning px-2 text-white me-md-2">New Article</a>
+            <a href="http://127.0.0.1:3000/movies/new" class="nav-link link-warning px-2 text-white me-md-2  mt-1">New Article</a>
           </li>
         <% end %>      
      

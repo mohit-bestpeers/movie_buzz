@@ -51,8 +51,12 @@
    text-align: center;
  }
 
+ .movie:hover{
+  scale: 1.05;
+ }
+
  .movie img {
-   width: 100%;
+   max-width: 100%;
    max-height: 400px;
    object-fit: cover;
    border-radius: 5px;
@@ -60,7 +64,7 @@
  }
 
  .img {
-  width: 100%;
+  max-width: 100%;
   max-height: 400px;
   object-fit: cover;
   border-radius: 5px;
@@ -240,3 +244,21 @@ footer{
  .btn{
   padding: 3px 5px;
  }
+
+
+
+
+
+
+
+
+
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+
