@@ -43,12 +43,13 @@
           <li class="nav-item">
             <a href="http://127.0.0.1:3000/movies/new" class="nav-link link-warning px-2 text-white me-md-2  mt-1">New Article</a>
           </li>
-        <% end %>      
-     
+        <% end %>  
 
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-        <input type="search" class="form-control form-control-dark " placeholder="Search..." aria-label="Search">
-      </form>
+
+        <%= form_tag search_path, :method => 'get', class: 'col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3'  do %>
+          <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search Customers' %>
+        <% end %>
+     
       
      
 
@@ -78,13 +79,13 @@
     if (noticeElement) {
       noticeElement.style.display = "none";
     }
-  }, 4000);
+  }, 5000);
   setTimeout(function() {
     var alertElement = document.getElementById("alert");
     if (alertElement) {
       alertElement.style.display = "none";
     }
-  }, 4000);
+  }, 5000);
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -55,6 +55,11 @@ class MoviesController < ApplicationController
   def about
   end
 
+  def search
+    @parameter = params[:search].downcase                                
+    @search = Movie.all.where("lower(name) LIKE :search",search: "%#{@parameter}%" )
+  end
+
   private
   
   def movie_params
