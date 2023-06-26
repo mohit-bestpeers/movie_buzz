@@ -8,7 +8,9 @@
         <%=image_tag movie.image ,class: "style_image" %> 
         <h5 class="card-title">Movie : <%=movie.name%></h5>
         <h6><p class="card-text">Type :<%= movie.category.name %></p></h6>
+        <% if movie.rating  != nil %>
         <h6><p class="card-text">Rating :<%=movie.rating%><span class="fa fa-star checked"></p></h6>
+       <% end %>
         <h6><p class="card-text">Released_on :<%=movie.released_on%></p></h6>
         <%= link_to 'Details', movie %>
       </div>
@@ -19,7 +21,7 @@
 
   <section class="featured-movies">
    <% if  @upcomming_movies != nil %>
-    <h2>Popular Movies</h2>
+    <h2>Upcomming Movies</h2>
     <div class="movie-grid margin">
     <% @upcomming_movies.each do |movie| %>
         <div class="movie">
@@ -60,24 +62,46 @@
   <h3>Movie Buzz</h3>
   <p>Welcome to Movie Buzz, your ultimate destination for all things cinema! Our app is designed to provide you with the latest updates, reviews, trailers,and news about your favorite movies and TV shows.With a user-friendly interface and a vast collection of content, we strive to keep you informed and entertained.</p>
   <ul class="socials">
-    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+    <div class="ico-wrapper">
+      <div class="card-img">
+        <a href="https://twitter.com/mobirise">
+          <span class="mbr-iconfont fa-twitter fa"></span>
+        </a>
+      </div>
+      <div class="card-img">
+        <a href="https://www.facebook.com/Mobirise/">
+          <span class="mbr-iconfont fa-facebook-f fa"></span>
+        </a>
+      </div>
+      <div class="card-img">
+        <a href="https://plus.google.com/u/0/+Mobirise">
+          <span class="mbr-iconfont fa-google-plus fa"></span>
+        </a>
+      </div>
+      <div class="card-img">
+        <a href="https://www.youtube.com/channel/UCt_tncVAetpK5JeM8L-8jyw">
+          <span class="mbr-iconfont fa-youtube-play fa"></span>
+        </a>
+      </div>
+      <div class="card-img">
+        <a href="https://www.instagram.com/mobirise/">
+          <span class="mbr-iconfont fa-instagram fa"></span>
+        </a>
+      </div>
+    
+      </div>
+      <div class="card-img">
+        <a href="https://www.linkedin.com/in/mobirise">
+          <span class="mbr-iconfont fa-linkedin fa"></span>
+        </a>
+      </div>
+    
+    </div>
   </ul>
   <div class="footer-bottom">
     <p>copyright &copy;2023 <a href="http://127.0.0.1:3000/">Movie Buzz</a>| Design By @ Mohit Bodkhe  </p>
   </div>
 </footer>
-
-
- 
-
-
-
-
-
 
 
 

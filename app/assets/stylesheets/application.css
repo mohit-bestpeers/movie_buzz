@@ -206,29 +206,6 @@ footer{
  margin: 1rem 0 3rem 0;
 }
 
-.socials li{
- margin: 0 10px;
-}
-
-.socials a{
- text-decoration: none;
- color: #fff;
- border: 1.1px solid white;
- border-radius: 50%;
- padding: 5px;
- 
-}
-
-.socials a i{
- font-size: 1.1rem;
- width: 25px;
- transition: color .4s ease;
- 
-}
-
-.socials a:hover i{
- color: rgb(188, 66, 212);
-}
 
 .footer-bottom{
  background-color: #000000;
@@ -403,4 +380,44 @@ margin:50px auto
   color:#000;
   font-weight: bold;
 } 
+
+
+
+
+
+
+.ico-wrapper {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card-img {
+  border: 2px solid #fde21c;
+  border-radius: 0.5rem;
+  width: 45px;
+  margin: 5px;
+  height: 45px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.card-img {
+  text-align: center;
+  flex-shrink: 0;
+}
+.card-img span{
+  color: #C850C0;
+}
+
+.card-img:hover {
+  transform: scale(1.1); 
+  background-color: rgb(72, 235, 112);
+}
+
 
