@@ -47,11 +47,9 @@
 
 
         <%= form_tag search_path, :method => 'get', class: 'col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3'  do %>
-          <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search Customers' %>
+          <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search Movies' %>
         <% end %>
-     
-      
-     
+          
 
       <div class="text-end">
       <% if user_signed_in? %> 
