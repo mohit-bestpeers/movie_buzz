@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   before_action :authenticate_user! ,only: [:create,:edit,:destroy,:update]
-  
+  before_action :movie_object ,only: [:show,:edit,:destroy,:update]
+
   def index
     if params[:filter] == "upcomming"
       @movies = Movie.where("released_on > ?",Date.today)
@@ -12,7 +13,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:id])
+    @movie 
   end
 
   def new
@@ -30,11 +31,11 @@ class MoviesController < ApplicationController
   end
 
   def edit
-    @movie = Movie.find(params[:id])
+    @movie
   end
 
   def update
-    @movie = Movie.find(params[:id])
+    @movie 
 
     if @movie.update(movie_params)
       redirect_to @movie,
@@ -45,7 +46,7 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    @movie = Movie.find(params[:id])
+   
     @movie.destroy
 
     redirect_to root_path, status: :see_other,
@@ -75,4 +76,7 @@ class MoviesController < ApplicationController
     params.require(:movie).permit(:name,:rating,:description,:director,:released_on,:category_id,:image)
   end
  
+  def movie_object
+    @movie = Movie.find(params[:id])
+  end
 end
