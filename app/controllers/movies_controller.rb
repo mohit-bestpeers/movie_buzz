@@ -64,7 +64,6 @@ class MoviesController < ApplicationController
     if @search.present?
       render 'search'
     else
-      flash.now[:alert] = 'No movies found matching the search criteria.'
       render 'search'
     end
     

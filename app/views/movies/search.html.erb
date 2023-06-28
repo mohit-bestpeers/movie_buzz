@@ -1,6 +1,7 @@
   <section class="featured-movies">
-    <h2>search results</h2>
-    <div class="movie-grid margin">
+  <h2>search results</h2>
+  <div class="movie-grid margin">
+  <% if @search.present? %>
     <% @search.each do |movie| %>
       <div class="movie">
         <%=image_tag movie.image ,class: "style_image" %> 
@@ -11,5 +12,9 @@
         <%= link_to 'Details', movie %>
       </div>
     <% end %>
-    </div>
+  <% else %>
+  <p>No results found.</p>
+  <% end %>
+
+  </div>
   </section>
