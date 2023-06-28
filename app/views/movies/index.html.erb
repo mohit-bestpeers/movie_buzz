@@ -4,57 +4,21 @@
     <h2>Movies</h2>
     <div class="movie-grid margin">
     <% @movies.each do |movie| %>
-      <div class="movie">
+      <div class="movie"> 
+       <a href="/movies/<%= movie.id %>">
         <%=image_tag movie.image ,class: "style_image" %> 
+        </a>
         <h5 class="card-title">Movie : <%=movie.name%></h5>
         <h6><p class="card-text">Type :<%= movie.category.name %></p></h6>
         <% if movie.rating  != nil %>
         <h6><p class="card-text">Rating :<%=movie.rating%><span class="fa fa-star checked"></p></h6>
        <% end %>
         <h6><p class="card-text">Released_on :<%=movie.released_on%></p></h6>
-        <%= link_to 'Details', movie %>
       </div>
     <% end %>
     </div>
      <% end %>
   </section>
-
-  <section class="featured-movies">
-   <% if  @upcomming_movies != nil %>
-    <h2>Upcomming Movies</h2>
-    <div class="movie-grid margin">
-    <% @upcomming_movies.each do |movie| %>
-        <div class="movie">
-          <%=image_tag movie.image, class: "style_image" %> 
-          <h5 class="card-title">Movie : <%=movie.name%></h5>
-          <h6><p class="card-text">Rating :<%=movie.rating%><span class="fa fa-star checked"></p></h6>
-          <h6><p class="card-text">Released_on :<%=movie.released_on%></p></h6>
-          <%= link_to 'Details', movie %>
-        </div>
-    <% end %>
-    </div>
-     <% end %>
-  </section>
-
-  <section class="featured-movies">
-   <% if  @popular_movies != nil %>
-    <h2>Popular Movies</h2>
-    <div class="movie-grid margin">
-    <% @popular_movies.each do |movie| %>
-      <% if (movie.rating > 3.5)  %>
-        <div class="movie">
-          <%=image_tag movie.image, class: "style_image" %> 
-          <h5 class="card-title">Movie : <%=movie.name%></h5>
-          <h6><p class="card-text">Rating :<%=movie.rating%><span class="fa fa-star checked"></p></h6>
-          <h6><p class="card-text">Released_on :<%=movie.released_on%></p></h6>
-          <%= link_to 'Details', movie %>
-        </div>
-      <% end %>
-    <% end %>
-    </div>
-     <% end %>
-  </section>
-
   
 </main>
 
