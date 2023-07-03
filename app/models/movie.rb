@@ -6,8 +6,9 @@ class Movie < ApplicationRecord
   has_one_attached :image
 
   def update_average_rating
-    self.rating = reviews.average(:star)
+    self.rating = reviews.average(:star)&.round(1)
     save
+  
   end
 
 end

@@ -143,10 +143,9 @@ a:link, a:visited {
   position: absolute;
   top: 25%;
   left: 35%;
-  border: 2px solid #f8f1f1;
+  border: 2px solid #a7a2a2;
   padding: 20px;
-  background-color: rgb(102, 187, 187);
-  
+ 
 }
 
 body{

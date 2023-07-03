@@ -27,4 +27,27 @@ RSpec.describe Review, type: :model do
       review2.destroy
     end
   end
+
+  describe '#update_movie_average_rating' do
+  let(:movie) { FactoryBot.create(:movie) }
+  let(:user1) { FactoryBot.create(:user) }
+  let(:user2) { FactoryBot.create(:user) }
+  let(:review1) { FactoryBot.create(:review, movie: movie, user: user1, star: 4) }
+  let(:review2) { FactoryBot.create(:review, movie: movie, user: user2, star: 3) }
+
+  before do
+    movie.reviews << [review1, review2]
+    movie.update_average_rating
+  end
+
+  it 'updates the movie average rating' do
+    expect(movie.rating).to eq(3)
+  end
 end
+end
+
+
+ 
+
+
+

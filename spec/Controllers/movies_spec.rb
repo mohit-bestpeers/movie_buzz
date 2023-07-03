@@ -1,22 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe MoviesController, type: :controller do
+  
 
   describe "GET index" do
 
     it "returns upcoming movies when filter is set to 'upcoming'" do
       future_movie = FactoryBot.create(:movie, released_on: Date.tomorrow)
-    
+
       get :index, params: { filter: "upcoming" }
-    
-      expect(assigns(:movies)).to eq([future_movie])
+
+      expect(assigns(:movies)).to match_array([future_movie])
     end
 
     it "returns all movies when no filter is specified" do
       get :index
       expect(assigns(:movies)).to eq(Movie.all)
     end
-  
+
     it "returns popular movies when filter is set to 'popular'" do
       high_rated_movie = FactoryBot.create(:movie, rating: 4.0)
 
@@ -52,7 +53,7 @@ RSpec.describe MoviesController, type: :controller do
       expect(response).to render_template(:new)
     end
   end
-
+ 
  
 end
 

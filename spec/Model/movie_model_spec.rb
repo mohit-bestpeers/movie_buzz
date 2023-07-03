@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Movie, type: :model do
-  describe '#update_average_rating' do
+ 
 
   describe 'associations' do
     it { should belong_to(:user) }
@@ -15,6 +15,7 @@ RSpec.describe Movie, type: :model do
     it { should have_one_attached(:image) }
   end
 
+  describe '#update_average_rating' do
     let(:movie) { FactoryBot.create(:movie) }
 
     it 'updates the average rating based on reviews' do
@@ -30,3 +31,6 @@ RSpec.describe Movie, type: :model do
     end
   end
 end
+
+
+
