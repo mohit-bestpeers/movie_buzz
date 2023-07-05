@@ -302,6 +302,7 @@ DEPENDENCIES
   byebug
   capybara
   database_cleaner
+  database_cleaner-active_record
   debug
   devise (~> 4.9)
   factory_bot_rails

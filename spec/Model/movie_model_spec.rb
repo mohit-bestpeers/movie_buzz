@@ -15,6 +15,30 @@ RSpec.describe Movie, type: :model do
     it { should have_one_attached(:image) }
   end
 
+  describe "validations" do
+
+    let(:user) { User.create(email: 'test@example.com', password: 'password',role: "admin") }
+    let(:category) { Category.create(name: "Action") }
+
+    it "requires a name" do
+      movie = Movie.new(name: nil, released_on: Date.today)
+      expect(movie).not_to be_valid
+      expect(movie.errors[:name]).to include("can't be blank")
+    end
+
+    it "requires a released_on date" do
+      movie = Movie.new(name: "Example Movie", released_on: nil)
+      expect(movie).not_to be_valid
+      expect(movie.errors[:released_on]).to include("can't be blank")
+    end
+
+    it "is valid with a name and released_on date" do
+      movie = Movie.new(name: "Example Movie", released_on: Date.today,user_id: user.id,category_id: category.id)
+      expect(movie).to be_valid
+    end
+  end
+
+
   describe '#update_average_rating' do
     let(:movie) { FactoryBot.create(:movie) }
 
