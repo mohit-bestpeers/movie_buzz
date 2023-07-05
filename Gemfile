@@ -7,6 +7,7 @@ ruby "3.0.0"
 gem "rails", "~> 7.0.5"
 gem 'bootstrap', '~> 4.0'
 gem 'jquery-rails'
+gem 'factory_bot_rails'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -50,8 +51,17 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 # gem "sassc-rails"
 
+gem 'simplecov'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', '~> 5.0'
+end
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
